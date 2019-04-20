@@ -4,8 +4,13 @@
 		<div class="col-9">
 			<h3>検索ワード</h3>
 			<div class="search-word">
+				<%= form_with url:download_path,local:true do | f |%>
+					<p>検索ワード入力<%= f.text_field :search_word %></p>
+					<%= f.submit %>
+				<% end %>
 			</div>
 		</div>
 		<div class="col-1"></div>
 	</div>
 </div>
+
