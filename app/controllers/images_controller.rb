@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
 	include ImagesHelper
+	include AnalysisHelper
 	def index
 		@images = Image.all
 	end
@@ -9,13 +10,21 @@ class ImagesController < ApplicationController
 	end
 
 	def download
-		search_word=URI.encode(params[:search_word])
+		search_word = URI.encode(params[:search_word])
+		# # google
+		# google = Nokogiri::HTML(open(
+		# 	"https://www.google.co.jp/search?q=#{search_word}&tbm=isch"))
+		# google.xpath("//img").each do |link|
+		# 	url = link.to_s.match(/https.*(?="\sw)/)
+		# 	puts url
+		# end
 		doc = Nokogiri::HTML(open(
 			"https://www.flickr.com/search/?q=#{search_word}"))
 		doc.xpath("//div[@class='view photo-list-photo-view requiredToShowOnServer awake']").each do |link|
 			url = link.to_s.match(/https.*?jpg|png|jpeg/)
 			#サムネ
 			save_image(url[0])
+			analyse_image(url[0])
 			sleep(1)
 		end
 		redirect_to images_path

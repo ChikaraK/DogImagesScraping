@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_051719) do
+ActiveRecord::Schema.define(version: 2019_04_24_064241) do
+
+  create_table "confidence_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "image_id"
+    t.integer "confidence"
+    t.string "tag"
+  end
 
   create_table "images", force: :cascade do |t|
     t.string "name"
-    t.binary "data"
+    t.text "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

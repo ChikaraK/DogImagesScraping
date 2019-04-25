@@ -10,7 +10,7 @@ module ImagesHelper
 				file.write(data.read)
 			end
 		end
-		feed = Image.new(:name  => filename,:data => filepath)
+		feed = Image.new(:name => filename,:data => url)
 		feed.save
 	end
 end

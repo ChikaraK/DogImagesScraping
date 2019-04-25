@@ -1,11 +1,23 @@
 <div class="container">
 	<div class="raw">
 		<div class="col-1"></div>
-		<div class="col-9">
+		<div class="col-10">
 			<h3>検索結果</h3>
-			<div class="search-word">
+			<div class="search-results">
 				<% @images.each do | i |%>
-					<%= image_tag "#{i.name}"%>
+					<div class="one_of_results">
+						<div class="image">
+							<%= image_tag "#{i.data}"%>
+						</div>
+						<div class="analysis">
+							<% i.confidence_tag.each do |ic|%>
+								<p>
+									<%= ic.confidence.to_s + "%"%>
+									<%= ic.tag%>
+								</p>
+							<% end %>
+						</div>
+					</div>
 				<% end %>
 			</div>
 		</div>
