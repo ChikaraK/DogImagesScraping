@@ -1,16 +1,22 @@
+<div class="main-content">
 <div class="container">
-	<div class="raw">
+	<div class="row">
 		<div class="col-1"></div>
-		<div class="col-10">
-			<h3>検索ワード</h3>
-			<div class="search-word">
-				<%= form_with url:download_path,local:true do | f |%>
-					<p>検索ワード入力<%= f.text_field :search_word %></p>
-					<%= f.submit %>
-				<% end %>
+		<div class="col-10 mt-5 mb-5">
+			<div class="card text-center bg-light" style="width: 100%;">
+			<div class="logo">
+				<%= image_tag "25042019171242A.png", :width => '50%', :height => '10%'%>
+			</div>
+				<p><a href="https://www.flickr.com/">flickr</a>から気になる画像を検索し、分析してみましょう</p>
+				<div class="search-word">
+					<%= form_with url:download_path,local:true do | f |%>
+						<p><%= f.text_field :search_word, :placeholder => "検索ワードを入力してください", :size=>"60x10" %></p>
+						<%= f.submit :start! , class:"btn btn-warning text-white" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 		<div class="col-1"></div>
 	</div>
 </div>
-
+</div>

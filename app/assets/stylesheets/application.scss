@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+/*グローバル*/
+ * {
+    margin: 0;
+    padding: 0;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/*入力画面*/
+.main-content{
+    background-image: image-url("nc167322.png");
+    height: 600px;
+}
+
+/*結果表示画面*/
+.result-content{
+    background-image: image-url("nc167322.png");
+    height: 100%;
+}
+.image{
+	margin-left: 3%;
+	display: inline-block;
+}
+
+.conf_tags{
+	margin: 5,auto;
+}
+
+.analysis{
+	display: inline-block;
+	width: 65%;
+	margin-left: 3%;
+}
+.tag{
+	margin-left: 1%;
+}
+/*↓棒グラフ*/
+.graph {
+	display: inline-block;
+    position: relative; /* IE is dumb */
+    width: 300px;
+    border: 1px solid #207870;
+    padding: 2px;
+}
+.graph .bar {
+    display: block;
+    position: relative;
+    background: #409890;
+    text-align: center;
+    color: #f0ffff;
+    height: 2em;
+    line-height: 2em;
+}
+.graph .bar span { position: absolute; left: 1em; }
+/*↑棒グラフ*/

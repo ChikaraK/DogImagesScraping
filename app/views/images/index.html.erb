@@ -1,27 +1,40 @@
+<div class="result-content">
 <div class="container">
-	<div class="raw">
+	<div class="row">
 		<div class="col-1"></div>
-		<div class="col-10">
-			<h3>検索結果</h3>
+		<div class="col-10 bg-dark">
 			<div class="search-results">
 				<% @images.each do | i |%>
-					<div class="one_of_results">
-						<div class="image">
-							<%= image_tag "#{i.data}"%>
-						</div>
-						<div class="analysis">
-							<% i.confidence_tag.each do |ic|%>
-								<p>
-									<%= ic.confidence.to_s + "%"%>
-									<%= ic.tag%>
-								</p>
-							<% end %>
+				<div class="card" style="width: 100%;">
+					<div class="one_of_results card-body">
+						<div class="row">
+							<div class="image">
+								<%= image_tag "#{i.data}", :width => '210', :height => '100%' , :alt => "画像" %>
+							</div>
+							<div class="analysis">
+								<div class="card-header">Result</div>
+								<% i.confidence_tag.first(4).each do |ic|%>
+									<ul class="list-group list-group-flush">
+	    								<li class="list-group-item">
+	    									<div class="graph">
+											    <span class="bar" style= "width: <%= ic.confidence %>%;" ><%= ic.confidence.to_s + "%"%></span>
+											</div>
+											<p class="tag btn btn-primary font-italic">
+												<% ic.tag.match(/(?<=\[").*?(?="])/) do |m| %>
+													<%= m[0] %>
+												<%end%>
+											</p>
+										</li>
+									</ul>
+								<% end %>
+							</div>
 						</div>
 					</div>
+				</div>
 				<% end %>
 			</div>
 		</div>
 		<div class="col-1"></div>
 	</div>
 </div>
-
+</div>
