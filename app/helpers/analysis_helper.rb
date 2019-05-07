@@ -10,12 +10,12 @@ module AnalysisHelper
 		filepath = dirName + filename
 
 		# imagga apiのアカウント情報
-		api_key = 'acc_ab4eb3f356b18fb'
-		api_secret = '27799fc37e9319988e4fd959c678e62e'
+		ENV['API_KEY']
+		ENV['API_SECRET']
 
 		# ローカルに保存済みの画像をimaggaにアップロードする
 		image_path = filepath
-		auth = 'Basic ' + Base64.strict_encode64( "#{api_key}:#{api_secret}" ).chomp
+		auth = 'Basic ' + Base64.strict_encode64( "#{ENV['API_KEY']}:#{ENV['API_SECRET']}").chomp
 		upload = RestClient.post "https://api.imagga.com/v2/uploads", { :image => File.new(image_path, 'rb') }, { :Authorization => auth }
 
 		#アップロードした画像のimage_upload_idを代入
