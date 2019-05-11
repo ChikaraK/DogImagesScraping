@@ -10,6 +10,15 @@ class ImagesController < ApplicationController
 	end
 
 	def download
+		# 前回の履歴を消す
+		images = Image.all
+		if !images.empty?
+			images.each do |i|
+				i.destroy
+			end
+		end
+
+		# 結果表示
 		search_word = URI.encode(params[:search_word])
 		if search_word == ""
 			redirect_to root_path
