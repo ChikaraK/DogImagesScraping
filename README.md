@@ -1,4 +1,4 @@
-# DogImagesScraping 
+# DogImagesScraping 現在使用できません（7・18）※詳細はIssueへ
 DogImagesScrapingはImagga Apiを用いて  
 画像解析を行うアプリケーションです。  
 当初の予定と変わり、犬以外にも一応の対応をしているため
