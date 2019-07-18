@@ -26,7 +26,7 @@ class ImagesController < ApplicationController
 			doc = Nokogiri::HTML(open(
 				"https://www.flickr.com/search/?q=#{search_word}"))
 			doc.xpath("//div[@class='view photo-list-photo-view requiredToShowOnServer awake']").each do |link|
-				url = link.to_s.match(/https.*?jpg|png|jpeg/)
+				url = link.to_s.match(/live.*?jpg|png|jpeg/)
 				#サムネ
 				save_image(url[0])
 				analyse_image(url[0])
