@@ -26,10 +26,11 @@ class ImagesController < ApplicationController
 			doc = Nokogiri::HTML(open(
 				"https://www.flickr.com/search/?q=#{search_word}"))
 			doc.xpath("//div[@class='view photo-list-photo-view requiredToShowOnServer awake']").each do |link|
-				url = link.to_s.match(/live.*?jpg|png|jpeg/)
+				base_url = link.to_s.match(/live.*?jpg|png|jpeg/)
+				url = "https://" + base_url[0]
 				#サムネ
-				save_image(url[0])
-				analyse_image(url[0])
+				save_image(url)
+				analyse_image(url)
 				sleep(1)
 			end
 			redirect_to images_path
