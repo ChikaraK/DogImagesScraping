@@ -31,7 +31,7 @@ class ImagesController < ApplicationController
 				#サムネ
 				save_image(url)
 				analyse_image(url)
-				sleep(1)
+				sleep(0.3)
 			end
 			redirect_to images_path
 		end
